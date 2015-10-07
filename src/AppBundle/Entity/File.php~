@@ -1,0 +1,46 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+
+
+
+/**
+ *
+ * @ORM\Table(name="file")
+ * @ORM\Entity()
+ * @Vich\Uploadable
+ */
+class File
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @Vich\UploadableField(mapping="news_image", fileNameProperty="imageName")
+     *
+     * @var File $imageFile
+     */
+    private $imageFile;
+
+    /**
+     * @ORM\Column(name="image_name", type="string", length=255, nullable=true)
+     *
+     * @var string $imageName
+     */
+    private $imageName;
+
+
+
+
+
+}

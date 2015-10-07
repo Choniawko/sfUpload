@@ -1,0 +1,46 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+
+
+
+/**
+ *
+ * @ORM\Table(name="article")
+ * @ORM\Entity()
+
+ */
+class Article
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=255)
+     */
+    private $name;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="File", cascade={"persist"})
+     * @ORM\JoinTable(name="article_file",
+     *     joinColumns={@ORM\JoinColumn(name="article_id", referencedColumnName="id")},
+     *     inverseJoinColumns={@ORM\JoinColumn(name="file_id", referencedColumnName="id", unique=true)}
+     * )
+     */
+    private $files;
+
+
+
+}
